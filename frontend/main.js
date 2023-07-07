@@ -55,21 +55,6 @@ export const sortNewestToOldest = (array) => {
   return sorted;
 };
 
-// {
-//   "url": "https://www.podbean.com/ew/dir-66zmw-19191c65",
-//   "episodeTitle": "Supper Club × Why Netlify bought Gatsby, GraphQL Data Layer, and Headless CMS with Dustin Schau",
-//   "podcastTitle": "Syntax - Tasty Web Development Treats",
-//   "date": "2023-06-23"
-//   },
-
-/*
- ** loop through data array
- ** for each episode in the data array
- ** check if there is a podcast object in the counter array with the same podcast title
- **** if there is, call increment on that Podcast object
- **** if not, create a new podcast object
- ** return the array of Podcast objects
- */
 export const findAndCountPodcastTitles = (array) => {
   const Podcast = (podcastTitle) => {
     let count = 1;

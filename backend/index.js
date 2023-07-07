@@ -1,20 +1,24 @@
-import express from "express";
-import cors from "cors";
-import { getEpisodes } from "./getEpisodes.js";
+import app from "./server.js";
+import mongodb from "mongodb";
+import dotenv from "dotenv";
+dotenv.config();
+const MongoClient = mongodb.MongoClient;
 
-const app = express();
-const PORT = 6969;
+const PORT = process.env.PORT || 8000;
 
-app.use(cors());
-
-app.get("/", (req, res) => {
-  getEpisodes().then((episodes) => {
-    res.json(episodes);
+MongoClient.connect(process.env.MOVIE_DB_URI, {
+  maxPoolSize: 50,
+  wtimeoutMS: 2500,
+  useNewUrlParser: true,
+})
+  .catch((err) => {
+    console.error(err.stack);
+    process.exit(1);
+  })
+  .then(async (client) => {
+    app.listen(PORT, () => {
+      console.log(`App listening on port ${PORT}`);
+    });
   });
-});
 
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
-});
-
-// getEpisodes().then(console.log).catch(console.error);
+export default app;
