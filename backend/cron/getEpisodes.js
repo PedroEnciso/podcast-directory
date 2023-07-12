@@ -33,14 +33,3 @@ export const getEpisodes = async () => {
     }
   });
 };
-
-/*
-    episode: {
-        podcastTitle: podcast title,
-        episodeTitle: episode title
-        date: episode date,
-        url: link to Podbean episode page,
-    }
-*/
-
-// module.exports = { getEpisodes };
