@@ -1,6 +1,6 @@
 import { Podcast } from "./components/Podcast.js";
 
-const url = "http://localhost:6969/";
+const url = "http://localhost:5000/api/v1/episodes";
 const appElement = document.getElementById("app");
 
 const getData = async () => {
