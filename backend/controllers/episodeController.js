@@ -9,9 +9,11 @@ export const episode_list = asyncHandler(async (req, res) => {
 
 // this is not a function called by a router, so call function normally
 export const save_episodes = async (episodes) => {
-  // TODO: delete all data in the prisma
+  // delete all episode data in the db
+  await prisma.episodes.deleteMany({});
+  console.log("all documents have been deleted");
 
-  // TODO: post newly fetched episodes to db
+  // post newly fetched episodes to db
   for (let i = 0; i < episodes.length; i++) {
     try {
       const addedEpisode = await prisma.episodes.create({ data: episodes[i] });
